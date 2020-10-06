@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace SobekanGames.OdinEditorWindow.Processors
 {
-  public class HideInlineWindowProcessor<T> : OdinAttributeProcessor<T> where T : Canvas
+  public class HideInlineWindowProcessor<T> : OdinAttributeProcessor<T> where T : Panel
   {
     public override void ProcessSelfAttributes(InspectorProperty property, List<Attribute> attributes)
     {

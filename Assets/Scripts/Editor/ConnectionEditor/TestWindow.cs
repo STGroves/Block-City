@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TestWindow : OdinEditorWindow
 {
-  [OdinSerialize] InlineWindow propertyWindow;
+  [OdinSerialize] InlineWindow _propertyWindow;
 
   [MenuItem("Window/Project/Test Window")]
   static void Init()
@@ -19,6 +19,6 @@ public class TestWindow : OdinEditorWindow
   {
     base.OnEnable();
 
-    propertyWindow = new TestInlineWindow(new Rect(0, 0, 200, 300), "Test", canMove: true);
+    _propertyWindow = new TestInlineWindow(new Rect(0, 0, 200, 300), "Test", canMove: true);
   }
 }

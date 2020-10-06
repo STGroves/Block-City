@@ -2,7 +2,7 @@
 using SobekanGames.OdinEditorWindow.Components;
 using UnityEngine;
 
-public class OdinConnectionEditorPropertyWindow : SobekanGames.OdinEditorWindow.Components.Canvas
+public class OdinConnectionEditorPropertyWindow : SobekanGames.OdinEditorWindow.Components.Panel
 {
   [OdinSerialize] Vector2Int minMax = Vector2Int.one;
   //DependencyObject<int> incoming;

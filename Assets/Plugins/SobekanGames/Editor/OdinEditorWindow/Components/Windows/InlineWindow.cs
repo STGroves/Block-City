@@ -5,16 +5,22 @@ using UnityEngine;
 
 namespace SobekanGames.OdinEditorWindow.Components
 {
-  public class InlineWindow : Canvas
+  public class InlineWindow : Panel
   {
     public string Title
     {
       get => _title;
       set => _title = value;
     }
+    
+    public bool Docked => _docked;
+
+    [OdinSerialize] protected bool _docked;
 
     [OdinSerialize] protected string _title;
     [OdinSerialize] protected GUIStyle _titleStyle;
+    
+
 
     protected const float MIN_SIZE = 15;
 

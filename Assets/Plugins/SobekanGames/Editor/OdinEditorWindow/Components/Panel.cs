@@ -1,20 +1,15 @@
-﻿using Sirenix.OdinInspector;
-using Sirenix.Serialization;
-using System.Collections.Generic;
+﻿using Sirenix.Serialization;
 using SobekanGames.OdinEditorWindow.Enums;
 using UnityEngine;
 
 namespace SobekanGames.OdinEditorWindow.Components
 {
-  public class Canvas : Element
+  public class Panel : Element
   {
     [OdinSerialize] protected GUIStyle _backgroundStyle;
     [OdinSerialize] protected Texture2D _backgroundTexture;
-    [OdinSerialize] protected List<Element> _children;
 
-    [OdinSerialize] public List<Element> Children => _children;
-
-    public Canvas(Rect canvasRect, bool canMove = false, ResizeType resizeType = ResizeType.None) : base(canvasRect, canMove, resizeType)
+    public Panel(Rect canvasRect, bool canMove = false, ResizeType resizeType = ResizeType.None) : base(canvasRect, canMove, resizeType)
     {
       GenerateDefaultTexture(ref _backgroundTexture, Color.grey);
       UpdateStyles();

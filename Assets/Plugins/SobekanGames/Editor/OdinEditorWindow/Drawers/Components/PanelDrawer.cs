@@ -5,7 +5,7 @@ using SobekanGames.OdinEditorWindow.Components;
 namespace SobekanGames.OdinEditorWindow.Drawers.Components
 {
   [DrawerPriority(0,0,1)]
-  internal class CanvasDrawer<T> : ElementDrawer<T> where T : Element
+  internal class PanelDrawer<T> : ElementDrawer<T> where T : Panel
   {
     protected InspectorProperty backgroundStyle;
 
@@ -27,8 +27,8 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
 
     protected virtual void DrawContent()
     {
-      for (int i = 0; i < Property.Children.Count; i++)
-        Property.Children[i].Draw();
+      //for (int i = 0; i < Property.Children.Count; i++)
+      //  Property.Children[i].Draw();
     }
   }
 }

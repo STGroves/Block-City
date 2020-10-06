@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace SobekanGames.OdinEditorWindow.Components
 {
+  [HideReferenceObjectPicker]
   public class Element
   {
     [OdinSerialize, HideIf("@true")] protected Rect _elementRect;

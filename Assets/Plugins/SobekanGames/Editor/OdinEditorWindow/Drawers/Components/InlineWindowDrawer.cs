@@ -7,7 +7,7 @@ using SobekanGames.OdinEditorWindow.Components;
 namespace SobekanGames.OdinEditorWindow.Drawers.Components
 {
   [DrawerPriority(0,0,2)]
-  internal class InlineWindowDrawer<T> : CanvasDrawer<T> where T : InlineWindow
+  internal class InlineWindowDrawer<T> : PanelDrawer<T> where T : InlineWindow
   {
     protected InspectorProperty title;
     protected InspectorProperty titleStyle;
@@ -22,7 +22,10 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
 
     protected override void Draw()
     {
-      SirenixEditorGUI.DrawBorders((Rect) rect.ValueEntry.WeakSmartValue,Element.MARGIN);
+      Rect r = (Rect) rect.ValueEntry.WeakSmartValue;
+      r.position = Vector2.zero;
+
+      SirenixEditorGUI.DrawBorders(r,Element.MARGIN);
 
       EditorGUILayout.BeginVertical();
 
