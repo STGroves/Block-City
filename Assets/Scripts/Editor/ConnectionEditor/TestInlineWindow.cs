@@ -18,6 +18,4 @@ public class TestInlineWindow : InlineWindow
   public TestInlineWindow(Rect rect, string title, ResizeType resizeType = ResizeType.All, bool canMove = false) : base(rect, title, resizeType, canMove)
   {
   }
-
-
 }

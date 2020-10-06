@@ -11,7 +11,7 @@ namespace SobekanGames.OdinEditorWindow.Processors
   {
     public override void ProcessChildMemberAttributes(InspectorProperty parentProperty, MemberInfo member, List<Attribute> attributes)
     {
-      if (member.Name[0] == '_')
+      if (member.Name[0] == '_' && member.Name != "Children")
         attributes.Add(new HideIfAttribute("@true"));
     }
   }

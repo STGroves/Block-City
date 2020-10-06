@@ -1,6 +1,5 @@
 ﻿using Sirenix.Serialization;
 using SobekanGames.OdinEditorWindow.Enums;
-using UnityEditor;
 using UnityEngine;
 
 namespace SobekanGames.OdinEditorWindow.Components
@@ -20,7 +19,6 @@ namespace SobekanGames.OdinEditorWindow.Components
     [OdinSerialize] protected string _title;
     [OdinSerialize] protected GUIStyle _titleStyle;
     
-
 
     protected const float MIN_SIZE = 15;
 
@@ -58,10 +56,7 @@ namespace SobekanGames.OdinEditorWindow.Components
 
       _backgroundStyle.padding = new RectOffset(MARGIN, MARGIN, MARGIN, MARGIN);
 
-      if (EditorStyles.largeLabel == null)
-        return;
-
-      _titleStyle = new GUIStyle(EditorStyles.largeLabel);
+      _titleStyle = new GUIStyle { fontStyle = FontStyle.Normal, fontSize = 16, normal = new GUIStyleState() { textColor = new Color(0.60546875f, 0.60546875f, 0.60546875f) } };
     }
   }
 }

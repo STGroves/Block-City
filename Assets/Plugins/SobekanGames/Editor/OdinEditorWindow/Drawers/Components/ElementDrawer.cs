@@ -11,13 +11,15 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
   {
     protected InspectorProperty rect;
 
-    protected bool beingDragged;
-    protected InspectorProperty moveable;
 
-    protected bool beingResized;
+    protected InspectorProperty moveable;
     protected InspectorProperty resizeType;
 
     protected InspectorProperty minSize;
+    protected InspectorProperty maxSize;
+
+    protected bool beingDragged;
+    protected bool beingResized;
 
     Rect[] resizeAreas;
     ResizeType resizeAreaSelected;
@@ -28,11 +30,10 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
 
       rect = Property.Children["_elementRect"];
 
-      //beingDragged = Property.Children["beingDragged"];
       moveable = Property.Children["_moveable"];
-      //beingResized = Property.Children["beingResized"];
       resizeType = Property.Children["_resizeType"];
       minSize = Property.Children["_minSize"];
+      maxSize = Property.Children["_maxSize"];
 
       resizeAreas = new Rect[8];
 
@@ -41,6 +42,9 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
 
     void UpdateResizeAreas()
     {
+      if (rect == null)
+        return;
+
       Vector2 size = ((Rect) rect.ValueEntry.WeakSmartValue).size;
 
       resizeAreas[0] = new Rect(Vector2.zero, Vector2.one * Element.MARGIN);
@@ -68,7 +72,6 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
                 CheckResizeAreas(e.mousePosition))
             {
               beingResized = true;
-              e.Use();
               GUI.changed = true;
             }
 

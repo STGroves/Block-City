@@ -6,11 +6,13 @@ using SobekanGames.OdinEditorWindow.Components;
 
 namespace SobekanGames.OdinEditorWindow.Drawers.Components
 {
-  [DrawerPriority(0,0,2)]
+  [DrawerPriority(0,0,3)]
   internal class InlineWindowDrawer<T> : PanelDrawer<T> where T : InlineWindow
   {
     protected InspectorProperty title;
     protected InspectorProperty titleStyle;
+
+    Vector2 scrollPos;
 
     protected override void Initialize()
     {
@@ -30,17 +32,42 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
       EditorGUILayout.BeginVertical();
 
       if (!string.IsNullOrEmpty((string)title.ValueEntry.WeakSmartValue))
-        DrawTitle();
+        DrawTitlebar();
+
+      scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
+
+      r.size -= Vector2.one * Element.MARGIN * 2;
+
+
+      GUILayout.BeginArea(r);
+      
+      EditorGUILayout.BeginVertical();
 
       DrawContent();
 
       EditorGUILayout.EndVertical();
+
+      GUILayout.EndArea();
+
+      EditorGUILayout.EndVertical();
+
+      EditorGUILayout.EndScrollView();
     }
 
-    protected virtual void DrawTitle()
+    protected virtual void DrawTitlebar()
     {
-      EditorGUILayout.LabelField((string)title.ValueEntry.WeakSmartValue, (GUIStyle)titleStyle.ValueEntry.WeakSmartValue);
+      GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
+      GUILayout.Label((string)title.ValueEntry.WeakSmartValue, (GUIStyle)titleStyle.ValueEntry.WeakSmartValue);
+      if (GUILayout.Button("X", GUILayout.Width(25)))
+        Property.ValueEntry.WeakSmartValue = null;
+      GUILayout.EndHorizontal();
       SirenixEditorGUI.DrawThickHorizontalSeparator();
+    }
+
+    protected override void DrawContent()
+    {
+      for (int i = 0; i < Property.Children.Count; i++)
+        Property.Children[i].Draw();
     }
   }
 }

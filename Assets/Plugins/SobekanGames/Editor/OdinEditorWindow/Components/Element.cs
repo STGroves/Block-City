@@ -1,20 +1,21 @@
-﻿using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+﻿using Sirenix.Serialization;
 using SobekanGames.OdinEditorWindow.Enums;
 using UnityEngine;
 
 namespace SobekanGames.OdinEditorWindow.Components
 {
-  [HideReferenceObjectPicker]
   public class Element
   {
-    [OdinSerialize, HideIf("@true")] protected Rect _elementRect;
-    [OdinSerialize, HideIf("@true")] protected int z;
+    [OdinSerialize] protected Rect _elementRect;
+    [OdinSerialize] protected int _z = 0;
 
-    [OdinSerialize, HideIf("@true")] protected bool _moveable;
-    [OdinSerialize, HideIf("@true")] protected ResizeType _resizeType;
+    [OdinSerialize] protected bool _moveable;
+    [OdinSerialize] protected ResizeType _resizeType;
 
     [OdinSerialize] protected Vector2 _minSize;
+    [OdinSerialize] protected Vector2 _maxSize;
+
+    public int ZLayer => _z;
 
     public const int MARGIN = 2;
 
@@ -23,6 +24,11 @@ namespace SobekanGames.OdinEditorWindow.Components
       _elementRect = elementRect;
       _moveable = canMove;
       _resizeType = resizeType;
+    }
+
+    public void SetZ(int zLayer)
+    {
+      _z = zLayer;
     }
   }
 }

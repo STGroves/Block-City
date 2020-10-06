@@ -25,10 +25,6 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
       DrawContent();
     }
 
-    protected virtual void DrawContent()
-    {
-      //for (int i = 0; i < Property.Children.Count; i++)
-      //  Property.Children[i].Draw();
-    }
+    protected virtual void DrawContent() { }
   }
 }
