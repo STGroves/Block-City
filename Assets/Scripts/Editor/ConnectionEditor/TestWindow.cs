@@ -2,7 +2,7 @@
 using SobekanGames.OdinEditorWindow;
 using UnityEditor;
 using SobekanGames.OdinEditorWindow.Components;
-using UnityEngine;
+using UE = UnityEngine;
 
 public class TestWindow : OdinEditorWindow
 {
@@ -20,11 +20,12 @@ public class TestWindow : OdinEditorWindow
   {
     base.OnEnable();
 
-    _propertyWindow = new TestInlineWindow(new Rect(0, 0, 200, 300), "Test1", canMove: true);
-    _propertyWindow2 = new TestInlineWindow(new Rect(300, 0, 200, 300), "Test2", canMove: true);
+    _propertyWindow = new TestInlineWindow(new UE.Rect(0, 0, 200, 300), "Test1", canMove: true);
+    _propertyWindow2 = new TestInlineWindow(new UE.Rect(300, 0, 200, 300), "Test2", canMove: true);
 
     _propertyWindow.SetZ(2);
 
+    Canvas canvas = GetBase<Canvas>();
     canvas.Children.Add(_propertyWindow);
     canvas.Children.Add(_propertyWindow2);
   }

@@ -3,8 +3,9 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using SobekanGames.OdinEditorWindow.Components;
+using SobekanGames.OdinEditorWindow.Components.Windows;
 
-namespace SobekanGames.OdinEditorWindow.Drawers.Components
+namespace SobekanGames.OdinEditorWindow.Drawers.Components.Windows
 {
   [DrawerPriority(0,0,3)]
   internal class InlineWindowDrawer<T> : PanelDrawer<T> where T : InlineWindow

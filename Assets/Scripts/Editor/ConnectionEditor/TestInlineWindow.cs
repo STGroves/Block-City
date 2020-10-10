@@ -1,6 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using Sirenix.Serialization;
-using SobekanGames.OdinEditorWindow.Components;
+using SobekanGames.OdinEditorWindow.Components.Windows;
 using SobekanGames.OdinEditorWindow.Enums;
 using UnityEngine;
 

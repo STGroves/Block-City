@@ -3,7 +3,7 @@ using Sirenix.Serialization;
 
 public class Road : SerializedMonoBehaviour
 {
-  [OdinSerialize] public Junction[] Junctions { get; private set; }
+  [OdinSerialize] public Junction Junctions { get; private set; }
 }
 
 public class Junction

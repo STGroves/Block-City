@@ -1,9 +1,6 @@
 ﻿using Sirenix.OdinInspector.Editor;
-using SobekanGames.OdinEditorWindow.Components;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using Canvas = SobekanGames.OdinEditorWindow.Components.Canvas;
+using SobekanGames.OdinEditorWindow.Components;
 
 namespace SobekanGames.OdinEditorWindow.Drawers.Components
 {
@@ -11,6 +8,7 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
   internal class CanvasDrawer<T> : PanelDrawer<T> where T : Canvas
   {
     protected InspectorProperty children;
+    protected InspectorProperty[] childElements;
 
     protected override void Initialize()
     {
@@ -40,27 +38,23 @@ namespace SobekanGames.OdinEditorWindow.Drawers.Components
 
     void UpdateChildren()
     {
-      List<Element> childElements = (List<Element>)children.ValueEntry.WeakSmartValue;
+      int childCount = children.Children.Count;
 
-      for (int i = 0; i < children.Children.Count; i++)
+      for (int i = 0; i < childCount; i++)
       {
-        if (children.Children[i].ValueEntry.WeakSmartValue == null)
-          ((List<Element>) children.ValueEntry.WeakSmartValue).RemoveAt(i);
+        if (children.Children[i].ValueEntry.WeakSmartValue != null)
+          continue;
+
+        children.Children[i].Dispose();
       }
 
-      childElements = childElements.OrderByDescending((x) => x.ZLayer).ToList();
-      children.ValueEntry.WeakSmartValue = childElements;
+      childElements = children.Children.OrderBy((x) => (int) x.Children["_z"].ValueEntry.WeakSmartValue).ToArray();
     }
 
     void DrawChildren()
     {
-      GUI.depth = 0; 
-
-      for (int i = 0; i < children.Children.Count; i++)
-      {
-        GUI.depth = (int) children.Children[i].Children["_z"].ValueEntry.WeakSmartValue;
-        children.Children[i].Draw();
-      }
+      for (int i = 0; i < childElements.Length; i++)
+        childElements[i].Draw();
     }
   }
 }

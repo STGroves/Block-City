@@ -2,7 +2,7 @@
 using SobekanGames.OdinEditorWindow.Enums;
 using UnityEngine;
 
-namespace SobekanGames.OdinEditorWindow.Components
+namespace SobekanGames.OdinEditorWindow.Components.Windows
 {
   public class InlineWindow : Panel
   {

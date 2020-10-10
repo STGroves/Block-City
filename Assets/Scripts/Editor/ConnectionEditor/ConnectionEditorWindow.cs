@@ -72,125 +72,125 @@ public class ConnectionEditorWindow : EditorWindow
     node = null;
   }
 
-  private void OnGUI()
-  {
-    if (propWin == null)
-      OnEnable();
+  //private void OnGUI()
+  //{
+  //  if (propWin == null)
+  //    OnEnable();
 
-    Vector2 center = (position.size / 2);
-    Vector2 size = Vector2.one * CENTER_SIZE;
+  //  Vector2 center = (position.size / 2);
+  //  Vector2 size = Vector2.one * CENTER_SIZE;
 
-    propWin.Draw();
+  //  propWin.Draw();
 
-    EditorGUI.DrawRect(new Rect(center - (size / 2), size), Color.grey);
+  //  EditorGUI.DrawRect(new Rect(center - (size / 2), size), Color.grey);
 
-    if (!top)
-    {
-      if (GUI.Button(
-                      new Rect(
-                                center - (Vector2.up * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING + Node.CLOSE_BUTTON_SIZE)) +
-                                (Vector2.left * Node.CLOSE_BUTTON_SIZE * 0.5f), Vector2.one * Node.CLOSE_BUTTON_SIZE
-                              ),
-                      "+"
-                    ))
-        top = !top;
-    }
-    else
-    {
-      if (topNode == null)
-        topNode = new ConnectionNode(
-                            new Rect(
-                                      center - (Vector2.up * ((CENTER_SIZE * 0.5f) + Node.NODE_MIN_HEIGHT + CENTER_NODE_PADDING)) +
-                                      (Vector2.left * ((CENTER_SIZE * 0.5f) + Node.NODE_MARGIN)),
-                                      new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
-                                    ),
-                            0,
-                            RemoveNode
-                          );
+  //  if (!top)
+  //  {
+  //    if (GUI.Button(
+  //                    new Rect(
+  //                              center - (Vector2.up * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING + Node.CLOSE_BUTTON_SIZE)) +
+  //                              (Vector2.left * Node.CLOSE_BUTTON_SIZE * 0.5f), Vector2.one * Node.CLOSE_BUTTON_SIZE
+  //                            ),
+  //                    "+"
+  //                  ))
+  //      top = !top;
+  //  }
+  //  else
+  //  {
+  //    if (topNode == null)
+  //      topNode = new ConnectionNode(
+  //                          new Rect(
+  //                                    center - (Vector2.up * ((CENTER_SIZE * 0.5f) + Node.NODE_MIN_HEIGHT + CENTER_NODE_PADDING)) +
+  //                                    (Vector2.left * ((CENTER_SIZE * 0.5f) + Node.NODE_MARGIN)),
+  //                                    new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
+  //                                  ),
+  //                          0,
+  //                          RemoveNode
+  //                        );
 
-      topNode.Draw();
-    }
+  //    topNode.Draw();
+  //  }
 
-    if (!bottom)
-    {
-      if (GUI.Button(
-                      new Rect(
-                                center - (Vector2.down * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING)) +
-                                (Vector2.left * (Node.CLOSE_BUTTON_SIZE * 0.5f)), Vector2.one * Node.CLOSE_BUTTON_SIZE
-                              ),
-                      "+"
-                    ))
-        bottom = !bottom;
-    }
+  //  if (!bottom)
+  //  {
+  //    if (GUI.Button(
+  //                    new Rect(
+  //                              center - (Vector2.down * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING)) +
+  //                              (Vector2.left * (Node.CLOSE_BUTTON_SIZE * 0.5f)), Vector2.one * Node.CLOSE_BUTTON_SIZE
+  //                            ),
+  //                    "+"
+  //                  ))
+  //      bottom = !bottom;
+  //  }
 
-    else
-    {
-      if (bottomNode == null)
-        bottomNode = new Node(
-                               new Rect(
-                                         center - (Vector2.down * ((CENTER_SIZE * 0.5f) + CENTER_NODE_PADDING)) +
-                                         (Vector2.left * ((CENTER_SIZE * 0.5f) + Node.NODE_MARGIN)),
-                                         new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
-                                       ),
-                               180,
-                               RemoveNode
-                             );
+  //  else
+  //  {
+  //    if (bottomNode == null)
+  //      bottomNode = new Node(
+  //                             new Rect(
+  //                                       center - (Vector2.down * ((CENTER_SIZE * 0.5f) + CENTER_NODE_PADDING)) +
+  //                                       (Vector2.left * ((CENTER_SIZE * 0.5f) + Node.NODE_MARGIN)),
+  //                                       new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
+  //                                     ),
+  //                             180,
+  //                             RemoveNode
+  //                           );
 
-      bottomNode.Draw();
-    }
+  //    bottomNode.Draw();
+  //  }
 
-    if (!left)
-    {
-      if (GUI.Button(
-                      new Rect(
-                                center + (Vector2.left * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING + Node.CLOSE_BUTTON_SIZE)) -
-                                (Vector2.up * (Node.CLOSE_BUTTON_SIZE * 0.5f)), Vector2.one * Node.CLOSE_BUTTON_SIZE
-                              ),
-                      "+"
-                    ))
-        left = !left;
-    }
-    else
-    {
-      if (leftNode == null)
-        leftNode = new Node(
-                             new Rect(
-                                       center + (Vector2.left * (CENTER_SIZE + Node.NODE_MARGIN + (Node.NODE_MIN_HEIGHT * 0.5f) + CENTER_NODE_PADDING)) -
-                                       (Vector2.up * (Node.NODE_MIN_HEIGHT * 0.5f)),
-                                       new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
-                                     ),
-                             270,
-                             RemoveNode
-                           );
+  //  if (!left)
+  //  {
+  //    if (GUI.Button(
+  //                    new Rect(
+  //                              center + (Vector2.left * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING + Node.CLOSE_BUTTON_SIZE)) -
+  //                              (Vector2.up * (Node.CLOSE_BUTTON_SIZE * 0.5f)), Vector2.one * Node.CLOSE_BUTTON_SIZE
+  //                            ),
+  //                    "+"
+  //                  ))
+  //      left = !left;
+  //  }
+  //  else
+  //  {
+  //    if (leftNode == null)
+  //      leftNode = new Node(
+  //                           new Rect(
+  //                                     center + (Vector2.left * (CENTER_SIZE + Node.NODE_MARGIN + (Node.NODE_MIN_HEIGHT * 0.5f) + CENTER_NODE_PADDING)) -
+  //                                     (Vector2.up * (Node.NODE_MIN_HEIGHT * 0.5f)),
+  //                                     new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
+  //                                   ),
+  //                           270,
+  //                           RemoveNode
+  //                         );
 
-      leftNode.Draw();
-    }
+  //    leftNode.Draw();
+  //  }
 
-    if (!right)
-    {
-      if (GUI.Button(
-                      new Rect(
-                                center + (Vector2.right * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING)) -
-                                (Vector2.up * (Node.CLOSE_BUTTON_SIZE * 0.5f)), Vector2.one * Node.CLOSE_BUTTON_SIZE
-                              ),
-                      "+"
-                    ))
-        right = !right;
-    }
-    else
-    {
-      if (rightNode == null)
-        rightNode = new Node(
-                             new Rect(
-                                       center + (Vector2.right * (Node.NODE_MIN_HEIGHT * 0.5f)) -
-                                       (Vector2.up * (Node.NODE_MIN_HEIGHT * 0.5f)),
-                                       new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
-                                     ),
-                             90,
-                             RemoveNode
-                           );
+  //  if (!right)
+  //  {
+  //    if (GUI.Button(
+  //                    new Rect(
+  //                              center + (Vector2.right * ((CENTER_SIZE * 0.5f) + CENTER_BUTTON_PADDING)) -
+  //                              (Vector2.up * (Node.CLOSE_BUTTON_SIZE * 0.5f)), Vector2.one * Node.CLOSE_BUTTON_SIZE
+  //                            ),
+  //                    "+"
+  //                  ))
+  //      right = !right;
+  //  }
+  //  else
+  //  {
+  //    if (rightNode == null)
+  //      rightNode = new Node(
+  //                           new Rect(
+  //                                     center + (Vector2.right * (Node.NODE_MIN_HEIGHT * 0.5f)) -
+  //                                     (Vector2.up * (Node.NODE_MIN_HEIGHT * 0.5f)),
+  //                                     new Vector2(CENTER_SIZE + (Node.NODE_MARGIN * 2), Node.NODE_MIN_HEIGHT)
+  //                                   ),
+  //                           90,
+  //                           RemoveNode
+  //                         );
 
-      rightNode.Draw();
-    }
-  }
+  //    rightNode.Draw();
+  //  }
+  //}
 }
